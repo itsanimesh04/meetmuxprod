@@ -43,8 +43,10 @@ app.post("/createuser", async (req, res) => {
 
 app.post("/createorder", async (req, res) => {
   try {
-    const { name, id } = req.body;
+    const { name, id, username } = req.body;
     if (!name) return res.status(400).json({ error: "Name is required" });
+    if (!username)
+      return res.status(400).json({ error: "userName is required" });
     if (!id) return res.status(400).json({ error: "id is required" });
 
     const od = await orderSchema.findOne({
@@ -58,6 +60,7 @@ app.post("/createorder", async (req, res) => {
     const order = await orderSchema.create({
       name: name,
       id: id,
+      username: username,
     });
     await order.save();
     console.log("order saved successfull");
