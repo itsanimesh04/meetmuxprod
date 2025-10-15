@@ -1,23 +1,32 @@
 USER AND ORDER MODEL SERVER
+How to run:
+- git clone <URL>
+- cd <foldername>
+- npm i
+- node index.js or npx nodemon index.js
+- Note create a .env file and paste your mongo db url under MONGO_URI and port under port
+- DONE!!!
 
-endpoints :
-http://localhost:port/createuser
+Endpoints:
+- To create a new user:
+(POST) http://localhost:3001/createuser
 body{
-"name":"nameeeee",
-"username":"username"
+    "name":"name of the user",
+    "username":"username"
 }
 
-http://localhost:port/createorder
+- To create a new order for that user:
+(POST) http://localhost:3001/createorder
 body{
-"name":"name",
-"id"743,
-"username":"username from user table"
+    "name":"name",
+    "id":743,
+    "username":"username from user table"
 }
 
-
-http://localhost:port/deleteorder
+- To delete an existing order for that user:
+(POST) http://localhost:3001/deleteorder
 body{
-"id"743
+    "id":743
 }
 
 - The main logic is user create a user and each user can create orders and store it in the database.
